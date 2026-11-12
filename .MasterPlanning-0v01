@@ -1,0 +1,81 @@
+# PLC_MIGRATION_ONTOLOGY [MODE: IMMUTABLE_OVERLAY | TOKEN_OPT: MAX]
+# SCHEMA: ID[DOM:3L-ARCH:4L-SEQ] | SIEMENS_S7_315 | SRC_FILE | ALTUS_TARGET | EDGES(<=>Isomorphic, ⊂Subsumes, ->Triggers)
+
+[DOM_REGISTRY]
+CTL:Tier2_Local_Logic_PLC | NET:Tier3_Profibus_DP | SEN:Tier1_Field_IO | SAF:NR12_Safety_Interlocks
+
+[NODES]
+SEN-PRIM-01 | SymTable + FC105/106 Analog Scale | src:file_01..03 | Altus_AI_Norm_ST (PRIM) | ->CTL-COMP-01
+NET-TRIG-01 | CPU315-2DP Profibus Master + OB86/OB82 | src:file_04..06 | Altus_Profibus_Diag_ST (TRIG) | ->SAF-GOV-01
+CTL-PRIM-01 | FC10..FC25 Standard Motor/Valve Logic | src:file_07..22 | Altus_Std_MotVal_LD (PRIM) | <=>SEN-PRIM-01
+CTL-COMP-01 | FB1..FB15 Process Sequences + Inst_DBs | src:file_23..42 | Altus_Seq_Control_ST (COMP) | ⊂CTL-PRIM-01
+SAF-GOV-01  | Emergency Stop & NR-12 Interlock Matrix | src:file_43..49 | Altus_Safety_Interlock_LD (GOV) | ->CTL-COMP-01
+
+
+Applying the Gem Engine Prompt Boost framework established in your notebook, this blueprint rewrites your goal into a master architectural prompt, organizes the notebook design into structured topics, provides practical prompt and schema examples for the 49+ legacy files, compares implementation approaches, and concludes with five clarifying questions.
+1. Rewritten Master Prompt (For Your New Translation Notebook)
+To initialize the new Gemini Notebook with maximum reasoning capacity and zero terminology drift, use this master prompt:
+"Act as a Principal Industrial Automation Architect (DOM-INS) and Knowledge Graph Engineer. We are designing a deterministic translation system inside this Gemini Notebook to migrate a legacy PLC program—spread across 49+ raw text and PDF files from Siemens STEP 7 v5.5 (CPU 315-2DP)—into standardized Altus Ladder (LD) function blocks and Structured Text (ST) routines.
+Operate under a strict Read-Only / Immutable Source Constraint for the 49+ raw Siemens files, and structure our workspace using the AI-CORE Overlay Ontology (IMMUTABLE_OVERLAY, TOKEN_OPT: MAX) and Domain-Driven Design (Ubiquitous Language). Organize the system design into:
+ * Notebook Memory & File Governance: How to ingest, prefix, and index the 49+ raw PDFs/texts without exhausting LLM token budgets.
+ * Ubiquitous Language & Isomorphic Mapping (<=>): A shared markdown dictionary mapping Siemens S7-300 primitives, Profibus-DP (Tier 3 NET) addressing, and Tier 2 CTL blocks to their exact Altus IEC 61131-3 equivalents.
+ * Deontic Safety & Interlock Verification: Governance rules (GOV) ensuring safety interlocks (NR-12 / LOTO) are preserved with 100% logic fidelity during translation.
+ * Step-by-Step Translation Prompts: Modular prompts to extract, translate, and verify atomic blocks (PRIM) before assembling nested program packages (COMP)."
+2. Core Topics: Structuring the 49+ Files in a Gemini Notebook
+Managing more than 49 raw PDFs and text printouts requires separating your raw legacy code from the AI's semantic index so the engine does not suffer from context bloat or code drift:
+ * The 3-Tiered Source Naming Convention: Prefix every file uploaded to the new notebook using the Three-Tiered Memory Architecture so you and the Gem Engine can filter sources instantaneously:
+   * [RAW] / EPISODIC_: Your 49+ untouched Siemens STEP 7 v5.5 PDFs, STL/AWL text exports, symbol tables, and hardware configuration printouts.
+   * [ONTOLOGY] / SEMANTIC_: A single master index file (00_PLC_AI-CORE_INDEX.json or .md) and a Domain-Driven Design Ubiquitous Language dictionary (01_SIEMENS_ALTUS_DICTIONARY.md) that maps every legacy address and block to its new standard.
+   * [ENGINE-RULE] / PROCEDURAL_: Your reusable translation prompt templates, Altus ST/Ladder coding standards, and NR-12 safety validation checklists.
+ * Mapping to the DOM-INS 4-Tier Hierarchy: Classify the contents of the 49+ files across your established automation tiers before translating a single line of logic:
+   * Tier 1 (SEN — Field I/O): Map physical Siemens digital/analog I/O (I, Q, PIW, PQW) and 4–20mA scaling blocks (such as FC105 SCALE) to Altus field variables.
+   * Tier 2 (CTL — Local Logic): Map CPU 315-2DP execution blocks (OB1, cyclic interrupt OB35, error OBs, FC, FB, and DB) to standard Altus Program Organization Units (POUs) in Ladder and ST.
+   * Tier 3 (NET — Fieldbuses): Isolate the -2DP (Profibus-DP) and MPI communication configurations, slave diagnostics, and bus telegram mappings so network hardware changes do not break internal control logic.
+   * Tier 4 (SCADA / HMI Tags): Preserve memory markers (M) and Data Block (DB) structures polled by supervisory HMIs or historians.
+ * Token Compression (SYS-KNOW-01 / AI-CORE): Since 49+ PDFs consume substantial context window capacity, use pipe-delimited positional tuples and symbolic pointers (<=> for structural equivalence between Siemens and Altus, ⊂ for Function Block nesting, and -> for interrupt/trigger flow) inside your 00_PLC_AI-CORE_INDEX. This cuts index token usage by ~70% and reserves maximum LLM thinking capacity for complex STL-to-ST code synthesis.
+3. Practical Examples: Ontology Index & Staged Prompts
+A. Example AI-CORE Overlay Index Entry (00_PLC_AI-CORE_INDEX)
+Place a compressed block like this in your master index source so the Gemini Notebook understands how the 49+ files connect without re-reading every PDF on each turn:
+# PLC_MIGRATION_ONTOLOGY [MODE: IMMUTABLE_OVERLAY | TOKEN_OPT: MAX]
+# SCHEMA: ID[DOM:3L-ARCH:4L-SEQ] | SIEMENS_S7_315 | SRC_FILE | ALTUS_TARGET | EDGES(<=>Isomorphic, ⊂Subsumes, ->Triggers)
+
+[DOM_REGISTRY]
+CTL:Tier2_Local_Logic_PLC | NET:Tier3_Profibus_DP | SEN:Tier1_Field_IO | SAF:NR12_Safety_Interlocks
+
+[NODES]
+SEN-PRIM-01 | SymTable + FC105/106 Analog Scale | src:file_01..03 | Altus_AI_Norm_ST (PRIM) | ->CTL-COMP-01
+NET-TRIG-01 | CPU315-2DP Profibus Master + OB86/OB82 | src:file_04..06 | Altus_Profibus_Diag_ST (TRIG) | ->SAF-GOV-01
+CTL-PRIM-01 | FC10..FC25 Standard Motor/Valve Logic | src:file_07..22 | Altus_Std_MotVal_LD (PRIM) | <=>SEN-PRIM-01
+CTL-COMP-01 | FB1..FB15 Process Sequences + Inst_DBs | src:file_23..42 | Altus_Seq_Control_ST (COMP) | ⊂CTL-PRIM-01
+SAF-GOV-01  | Emergency Stop & NR-12 Interlock Matrix | src:file_43..49 | Altus_Safety_Interlock_LD (GOV) | ->CTL-COMP-01
+
+B. Prompt Sequence to Execute Inside the Notebook
+ * Phase 1 Prompt — Inventory & AI-CORE Indexing (Batching the 49+ Files):
+   "Scan the uploaded [RAW] Siemens files (Batch 1: Files 1 to 15). Do not translate the code yet. Extract every Organization Block (OB), Function (FC), Function Block (FB), and Data Block (DB), and output a compressed AI-CORE tuple table listing: Node_ID (PRIM, TRIG, COMP, or GOV), Siemens_Block_Name, Source_File_Name, Called_Blocks (⊂), and recommended target language (Altus_LD for boolean/interlock logic vs. Altus_ST for math, loops, and data handling)."
+ * Phase 2 Prompt — Building the DDD Ubiquitous Language Dictionary:
+   "Using the symbol tables and data blocks across our [RAW] sources, generate our 01_SIEMENS_ALTUS_DICTIONARY.md Ubiquitous Language file. Map every Siemens global symbol, S5Timer (S5T#), Counter, and system clock bit to a standardized Altus IEC 61131-3 variable name and data type (TON, TOF, INT, REAL, STRUCT) so all future translations share 100% identical naming."
+ * Phase 3 Prompt — Atomic Translation (PRIM first, then COMP):
+   *"Reference 00_PLC_AI-CORE_INDEX and 01_SIEMENS_ALTUS_DICTIONARY.md. Retrieve the raw code for [Block Name, e.g., FC12 / FB10] from [Source File X]. Perform a deterministic translation from Siemens STEP 7 v5.5 into [Altus Standard Ladder / Altus ST]:
+   * Replace proprietary Siemens S5 timers and STL accumulator registers (ACCU1/ACCU2, AR1/AR2) with clean IEC 61131-3 structures.
+   * Maintain 100% boolean equivalence on all SAF-GOV (NR-12 / LOTO) interlock rungs.
+   * Output: (a) The translated Altus block interface (VAR_INPUT, VAR_OUTPUT, VAR_IN_OUT, VAR), (b) The Altus ST code or structured Ladder network specification, and (c) A 'Belief Delta' verification table highlighting any hardware-specific edge cases (such as retentive memory or scan-cycle timing)."*
+4. Different Architectural Approaches for Your Notebook Pipeline
+Depending on how your 49+ files are structured and how you want to validate the output, you can choose between three distinct approaches:
+ * Approach 1: Bottom-Up Atomic Subsumption (PRIM \rightarrow COMP — Recommended)
+   * How it works: You use the notebook to first translate the lowest-level atomic primitives (PRIM—scaling blocks, motor/valve drivers, UDTs/DBs) and save those approved Altus blocks back into the notebook as [SEMANTIC_] reference sources. Next, you translate the higher-level orchestrating blocks (COMP—sequencers and OB1 routines), which simply call the already-verified atomic blocks via hierarchical subsumption.
+   * Pros: Eliminates repetitive errors, prevents AI hallucination on nested calls, and mirrors the modular task bundling proven in your maintenance ontology.
+ * Approach 2: LSM-Tree Batch Compaction (Best if the 49+ PDFs are fragmented or noisy)
+   * How it works: Following the N=30 LSM-Tree Compaction strategy from your AI-CORE framework, you group the 49+ files into two logical batches (e.g., Batch A: Hardware, I/O, DBs, and Low-Level FCs; Batch B: Process FBs, PID loops, and Comms). After processing each batch, you run a "Compaction Pass" that consolidates the extracted logic into a clean, low-token Markdown summary (CompressedEnglishLowToken / SYS-KNOW-01) before generating the final Altus code.
+   * Pros: Overcomes PDF formatting noise (headers, footers, split rungs across pages) and keeps retrieval latency ultra-low.
+ * Approach 3: Multi-Agent Blackboard Verification (SYS-MEM-01 & Belief Deltas)
+   * How it works: You use two separate prompt roles against the same notebook—Prompt Role A ("The Transpiler") converts the Siemens logic into Altus ST/Ladder, while Prompt Role B ("The Deontic Auditor") independently compares the new Altus code against the original Siemens PDF and flags any discrepancy ("Belief Delta") in scan-time behavior, Profibus-DP fault handling, or NR-12 safety interlocks.
+   * Pros: Highest reliability for safety-critical machinery where a missed normally-closed contact or edge trigger could cause equipment damage.
+5. Clarifying Questions to Finalize Your Setup
+To tailor the exact translation prompts and initialize your notebook right away, please share a few details:
+ * Altus Target Series & IDE: Which specific Altus PLC family and programming environment are you targeting (e.g., Nexto Series / Nexto Xpress in MasterTool IEC XE, or Ponto / Duo Series in MasterTool ME)?
+ * Source Languages in the 49+ Files: Are the Siemens STEP 7 v5.5 PDFs/texts exported primarily from LAD (Ladder), FBD, or STL (Statement List / AWL) with pointer addressing (AR1/AR2)?
+ * Criteria for Ladder vs. ST in Altus: Do you have a strict rule for which blocks become Altus Ladder (e.g., boolean interlocks, NR-12 safety circuits, and maintenance troubleshooting views) versus Altus ST (e.g., math, array/loop processing, analog scaling, and state machines)?
+ * Standard Library Availability: Do you already have a pre-existing library of "Standard Altus Blocks" (for motors, valves, PID, and analog inputs) that should be uploaded to the notebook as [ENGINE-RULE] target templates, or are we creating those standard Altus blocks from scratch during the migration?
+ * Automated Notebook Creation: Would you like me to create this new Gemini Notebook for you right now and inject the initial 00_PLC_AI-CORE_INDEX and 01_SIEMENS_ALTUS_DICTIONARY starter sources?
+
+ ...
