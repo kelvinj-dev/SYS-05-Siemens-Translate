@@ -16,3 +16,16 @@ Subsystem_Function,Axis_1_Physical,Axis_2_Cybernetic,Axis_3_Normative,Governing_
 "Winch Constant Tension & Braking","PHY-HYD or PHY-ELP; PHY-STR","CYB-OBS -> CYB-NOM / CYB-DEO","GOV-AST; GOV-BIO","API Spec 2C; ISO 19356; ISO 13849-1"
 "Pedestal Slip-Ring Assembly","PHY-ELP; PHY-ENV","CYB-NET","GOV-SYS","IEC 60092; IEC 60529; IEC 60079"
 
+
+
+
+UPDATE 0V03 -> ADD Cybernetics references
+
+Subsystem_Function,Axis_1_Physical,Axis_2_Cybernetic,Axis_3_Normative,Governing_Standards
+"[META-L0.1] Immutable Source Ingestion & Call DAG Indexing","PHY-SYM","CYB-ING -> CYB-OBS","GOV-SYS","ISO/IEC 12207; IACS UR E22"
+"[META-L0.2] Symbolic I/O, Profibus & Endianness Sanitization","PHY-SYM; PHY-ELP","CYB-ING -> CYB-TRN","GOV-SYS; GOV-AST","IEC 61131-3; IEC 61508-3"
+"[META-L0.3] Atomic Block Transpilation (S7 FC/FB to Altus ST/LD)","PHY-SYM","CYB-OBS -> CYB-TRN","GOV-SYS","IEC 61131-3; PLCopen"
+"[META-L0.4] Deontic Logic Parity & NR-12 Safety Verification","PHY-SYM","CYB-TRN -> CYB-VER","GOV-SYS; GOV-BIO","IEC 61508-3; ISO 13849-1; NR-12"
+"[META-L0.5] Composite Task Scheduling & Diagnostic Binding","PHY-SYM; PHY-ELP","CYB-TRN -> CYB-NOM","GOV-SYS; GOV-AST","IEC 61131-3; IACS UR E22"
+
+
