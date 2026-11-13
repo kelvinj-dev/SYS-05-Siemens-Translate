@@ -1,0 +1,62 @@
+# MASTER META-ONTOLOGY & MULTILAYER ORTHOGONAL MATRIX
+**System**: Open-Deck Shipboard Pedestal Crane (9m Unloaded Freeboard) Automated Control System
+**Migration Scope**: Siemens STEP 7 v5.5 (CPU 315-2DP) [49+ Immutable Raw Artifacts] <=> Altus MasterTool IEC XE (Nexto Series)
+**Ontology Paradigm**: AI-CORE Overlay (IMMUTABLE_OVERLAY | TOKEN_OPT: MAX | Second-Order Cybernetic Transpilation)
+
+---
+
+## 1. ORTHOGONAL AXIS DICTIONARY
+
+### Axis 1: Ontological & Physical/Symbolic Substrate (PHY)
+* **PHY-SYM**: Symbolic & Computational Substrate — 49+ read-only Siemens exports ([SRC_HW], [SRC_SYM], [SRC_DB], [SRC_PRIM], [SRC_COMP]), [INDEX_CALL_DAG.md], [INDEX_GLOBAL_SYM.md], and Altus IEC 61131-3 memory space.
+* **PHY-HYD**: Hydraulic Fluid Power — 3x A4V main pumps (350 bar max), 3x auxiliary piston pumps (50 bar brake/pilot rail), 6x A6VM motors (4x slew, 2x hoist), 2x 10-inch luffing cylinders, 1x 6-inch telescopic cylinder.
+* **PHY-STR**: Structural & Mechanical Kinematics — Pedestal slewing ring, luffing/telescopic boom structure, and 2x high-complexity Siebenhaar gearboxes with internal oil-released multi-disc brakes (50 bar release).
+* **PHY-ELP**: Electro-Programmable & Transduction Hardware — Legacy S7-300 CPU 315-2DP, target Altus Nexto PLC, solenoids, pressure transducers, encoders, and safety relays.
+* **PHY-MAN**: Manual Physical Actuation — Manually maneuvered hydraulic valves permuting pump-to-consumer routing across the 3 main/auxiliary shaft groups.
+* **PHY-ENV**: Marine Open-Deck Environment — 9m unloaded freeboard exposure, vessel roll/pitch/heave kinematics, salt-fog corrosion, and hazardous area boundaries.
+
+### Axis 2: Epistemological & Cybernetic Flow (CYB)
+* **CYB-ING (Layer 0)**: Epistemic Artifact Ingestion — Read-only parsing of S7 PDFs/texts into dependency DAGs and global symbol tables.
+* **CYB-TRN (Layer 0)**: Isomorphic Semantic Transpilation — Converting S7 STL/LAD/FBD, S5TIME, Big-Endian words, and AR1/AR2 pointers into strongly-typed Altus ST and LD.
+* **CYB-VER (Layer 0)**: Formal Equivalence & Deontic Verification — Auditing canonical Boolean parity (Output_S7 === Output_Altus) and NR-12 safety invariants.
+* **CYB-OBS (Layer 1)**: State Observation — Real-time sensor acquisition, pressure correlation, and manual valve permutation state inference.
+* **CYB-NET (Layer 1)**: Fieldbus & Slip-Ring Transport — Deterministic Profibus-DP communication and diagnostic status polling across the rotating pedestal interface.
+* **CYB-NOM (Layer 1)**: Nomological Regulation (Target: Altus ST) — Continuous closed-loop control, A4V/A6VM swashplate modulation, ramps, and 2-DOF LML math.
+* **CYB-DEO (Layer 1)**: Deontic Interlock Governance (Target: Altus LD) — Hard safety obligations/prohibitions, Siebenhaar 50 bar brake sequencing, anti-collision, and E-Stop/LOTO cutoffs.
+
+### Axis 3: Axiological / Normative Teleology (GOV)
+* **GOV-BIO**: Human Life & Operator Safety — Compliance with NR-12, LOTO, and maritime crew protection.
+* **GOV-AST**: Asset & Structural Integrity — Prevention of crane overturning, cylinder buckling, cavitation, or Siebenhaar gearbox brake dragging.
+* **GOV-SYS**: Epistemic & Computational Determinism — Zero semantic drift, scan-cycle integrity, endianness alignment, and fault-tolerant network diagnostics.
+
+---
+
+## 2. UNIFIED MULTILAYER ORTHOGONAL MATRIX (CSV)
+
+```csv
+Domain_ID,Layer,Subsystem_Function,Axis_1_Physical,Axis_2_Cybernetic,Axis_3_Normative,Target_IEC_Lang,Governing_Standards
+"META-L0.1","Layer 0 (Meta-Software)","Immutable Source Ingestion & Call DAG Indexing","PHY-SYM","CYB-ING -> CYB-OBS","GOV-SYS","Markdown Index","ISO/IEC 12207; IACS UR E22"
+"META-L0.2","Layer 0 (Meta-Software)","Symbolic I/O, Profibus & Endianness Sanitization","PHY-SYM; PHY-ELP","CYB-ING -> CYB-TRN","GOV-SYS; GOV-AST","GVL / DUT (STRUCT)","IEC 61131-3; IEC 61508-3"
+"META-L0.3","Layer 0 (Meta-Software)","Atomic Block Transpilation (S7 FC/FB to Altus POU)","PHY-SYM","CYB-OBS -> CYB-TRN","GOV-SYS","ST (NOM) / LD (DEO)","IEC 61131-3; PLCopen"
+"META-L0.4","Layer 0 (Meta-Software)","Deontic Logic Parity & NR-12 Safety Verification","PHY-SYM","CYB-TRN -> CYB-VER","GOV-SYS; GOV-BIO","Boolean Proof","IEC 61508-3; ISO 13849-1; NR-12"
+"META-L0.5","Layer 0 (Meta-Software)","Composite Task Scheduling & Diagnostic Binding","PHY-SYM; PHY-ELP","CYB-TRN -> CYB-NOM","GOV-SYS; GOV-AST","Task Config / ST / LD","IEC 61131-3; IACS UR E22"
+"CRN-L1.1","Layer 1 (Crane Plant)","Tri-Shaft HPU & Aux Rail (3x A4V 350bar + 3x Aux 50bar)","PHY-HYD; PHY-ELP","CYB-OBS -> CYB-NOM / CYB-DEO","GOV-AST; GOV-SYS","ST (Swash) + LD (Perm)","ISO 4413; IEC 60092; NR-12"
+"CRN-L1.2","Layer 1 (Crane Plant)","Hydraulic Valve Permutation Manifold (Manual Routing)","PHY-MAN; PHY-HYD","CYB-OBS -> CYB-DEO","GOV-SYS; GOV-BIO","LD (Interlocks)","ISO 4413; ISO 13849-1; NR-12"
+"CRN-L1.3","Layer 1 (Crane Plant)","Primary Boom Luffing Load-Holding (2x 10in Cylinders)","PHY-HYD; PHY-STR","CYB-OBS -> CYB-DEO","GOV-AST; GOV-BIO","LD + ST (Balance)","ISO 4413; DNV-ST-0378"
+"CRN-L1.4","Layer 1 (Crane Plant)","Telescopic Boom Extension (1x 6in Cylinder)","PHY-HYD; PHY-STR","CYB-OBS -> CYB-NOM / CYB-DEO","GOV-AST; GOV-BIO","ST (Pos) + LD (Lim)","DNV-ST-0378; EN 13852-1"
+"CRN-L1.5","Layer 1 (Crane Plant)","Dual Hoist & Siebenhaar Brake Logic (2x A6VM + 50bar Release)","PHY-HYD; PHY-STR","CYB-OBS -> CYB-NOM / CYB-DEO","GOV-AST; GOV-BIO","LD (Brake) + ST (Sync)","API Spec 2C; ISO 19356; ISO 13849-1"
+"CRN-L1.6","Layer 1 (Crane Plant)","Quad-Motor Slew Drive & Anti-Collision (4x A6VM)","PHY-HYD; PHY-ELP","CYB-OBS -> CYB-NOM / CYB-DEO","GOV-AST; GOV-BIO","ST (Torque) + LD (Zone)","IEC 62061; EN 13852-1; NR-12"
+"CRN-L1.7","Layer 1 (Crane Plant)","2-DOF Load Moment Limiter (Luff + Tele + Pressure)","PHY-ELP; PHY-ENV","CYB-OBS -> CYB-DEO","GOV-AST; GOV-SYS","ST (2D Math) + LD (Trip)","EN 13852-1; ISO 13849-1; IACS UR E22"
+"CRN-L1.8","Layer 1 (Crane Plant)","Open-Deck Motion & Heave Compensation (9m Freeboard)","PHY-HYD; PHY-ENV","CYB-OBS -> CYB-NOM","GOV-AST; GOV-SYS","ST (OB35 Fixed Task)","DNV-ST-0378; IEC 61131-3"
+"CRN-L1.9","Layer 1 (Crane Plant)","Pedestal Slip-Ring & Profibus-DP Network","PHY-ELP; PHY-ENV","CYB-NET -> CYB-DEO","GOV-SYS","ST (GetDiagnostics) + LD","IEC 60092; IEC 60529; IEC 60079"
+```
+
+---
+
+## 3. DEONTIC & ISOMORPHIC GOVERNANCE RULES
+1. **OBL_FAIL_SAFE**: Preserve Normally Closed (0 = Trip, 1 = Healthy) fail-safe polarity without intermediate logic inversion.
+2. **PROH_MULTI_COIL**: Consolidate scattered S7 Set/Reset (S/R) coils into single-network LD assignments.
+3. **OBL_NR12_RESET**: Require rising-edge manual reset (R_TRIG) with External Device Monitoring (EDM) feedback before re-enabling actuators or 50 bar brake release rails.
+4. **OBL_BRAKE_SYNC (CRN-L1.5)**: Prohibit Siebenhaar 50 bar brake release unless 350 bar A4V/A6VM closed-loop holding torque is verified; trip 350 bar drive immediately if 50 bar pilot rail drops below threshold.
+5. **OBL_VALVE_PERM (CRN-L1.2)**: Lock out A4V pump swashplate excitation unless manual valve permutation state is confirmed via limit switches or HMI + delta-P pre-check.
+6. **OBL_ENDIAN_SAFE (META-L0.2)**: Invert S7 Big-Endian byte offsets (MB0/MB1 in MW0) when unpacking Profibus PIW/PQW words into Altus little-endian structures.
