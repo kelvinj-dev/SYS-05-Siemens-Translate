@@ -1,0 +1,18 @@
+1. Markdown Table Format
+| SuA Subsystem / Function | Axis 1: Physical Medium (PHY) | Axis 2: Cybernetic / Epistemic (CYB) | Axis 3: Normative Target (GOV) | Governing Standards |
+|---|---|---|---|---|
+| Boom Luffing Load-Holding | PHY-HYD (Cylinders, Counterbalance Valves) | CYB-DEO (Passive Hydraulic Interlock Logic) | GOV-AST, GOV-BIO | ISO 4413, DNV-ST-0378 |
+| Load Moment Limiter (LML) Subsystem | PHY-ELP, PHY-ENV (Sensors, IP67 Enclosures) | CYB-OBS \rightarrow CYB-DEO (Inclinometer/Load Pin \rightarrow Hard Stop) | GOV-AST, GOV-SYS | EN 13852-1, ISO 13849-1, IACS UR E22 |
+| Active Heave Compensation (AHC) | PHY-HYD or PHY-ELP (Winch Drives) | CYB-OBS \rightarrow CYB-NOM (MRU Feedback \rightarrow Feedforward PID/MPC) | GOV-AST | DNV-ST-0378, IEC 61131-3 |
+| Slew Superstructure Anti-Collision | PHY-ELP (Slew Motor / Brake VFD) | CYB-OBS \rightarrow CYB-DEO (Forward Kinematics \rightarrow Zone Prohibition) | GOV-AST, GOV-BIO | IEC 62061, NR-12 |
+| Winch Constant Tension & Braking | PHY-HYD or PHY-ELP, PHY-STR (Drum, Wire Rope, Brake) | CYB-OBS \rightarrow CYB-NOM / CYB-DEO (Tensiometer \rightarrow Torque Control / Fail-Safe) | GOV-AST, GOV-BIO | API Spec 2C, ISO 19356, ISO 13849-1 |
+| Pedestal Slip-Ring Assembly | PHY-ELP, PHY-ENV (Rotary Joints, Seal Barriers) | CYB-NET (Fieldbus / Power Transport) | GOV-SYS | IEC 60092, IEC 60529, IEC 60079 |
+2. Raw Text / CSV Format
+Subsystem_Function,Axis_1_Physical,Axis_2_Cybernetic,Axis_3_Normative,Governing_Standards
+"Boom Luffing Load-Holding","PHY-HYD","CYB-DEO","GOV-AST; GOV-BIO","ISO 4413; DNV-ST-0378"
+"Load Moment Limiter (LML) Subsystem","PHY-ELP; PHY-ENV","CYB-OBS -> CYB-DEO","GOV-AST; GOV-SYS","EN 13852-1; ISO 13849-1; IACS UR E22"
+"Active Heave Compensation (AHC)","PHY-HYD or PHY-ELP","CYB-OBS -> CYB-NOM","GOV-AST","DNV-ST-0378; IEC 61131-3"
+"Slew Superstructure Anti-Collision","PHY-ELP","CYB-OBS -> CYB-DEO","GOV-AST; GOV-BIO","IEC 62061; NR-12"
+"Winch Constant Tension & Braking","PHY-HYD or PHY-ELP; PHY-STR","CYB-OBS -> CYB-NOM / CYB-DEO","GOV-AST; GOV-BIO","API Spec 2C; ISO 19356; ISO 13849-1"
+"Pedestal Slip-Ring Assembly","PHY-ELP; PHY-ENV","CYB-NET","GOV-SYS","IEC 60092; IEC 60529; IEC 60079"
+
